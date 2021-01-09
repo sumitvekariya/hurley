@@ -78,6 +78,7 @@ ${org.peers.map(peer => `
         container_name: ${peer.name}.${org.name}.hurley.lab
         image: hyperledger/fabric-peer:${this.options.envVars.FABRIC_VERSION}
         environment:
+            - GODEBUG=netdns=go
             - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
             - CORE_PEER_ID=${peer.name}.${org.name}.hurley.lab
             - CORE_PEER_ADDRESS=${peer.name}.${org.name}.hurley.lab:7051
